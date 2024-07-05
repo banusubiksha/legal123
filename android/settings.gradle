@@ -1,4 +1,15 @@
 rootProject.name = 'legal123'
-apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+
+// Apply native modules settings
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle")
+applyNativeModulesSettingsGradle(settings)
+
+// Include the main app module
 include ':app'
+
+// Include other necessary modules if needed
+include ':react-native-reanimated'
+project(':react-native-reanimated').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-reanimated/android')
+
+// Ensure react-native-gradle-plugin is correctly included
 includeBuild('../node_modules/react-native-gradle-plugin')
